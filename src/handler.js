@@ -33,14 +33,14 @@ const handler = (request, response, interval) => {
 
           response.writeHead(200, { "Transfer-Encoding": "chunked" });
 
-          const interval = setInterval(() => {
+          const ref = setInterval(() => {
             response.write(frame[i]);
             i = (i + 1) % frame.length;
           }, interval);
 
           response.on("close", () => {
             print("Client disconnected");
-            clearInterval(interval);
+            clearInterval(ref);
             response.end();
           });
 
