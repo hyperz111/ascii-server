@@ -1,4 +1,5 @@
 import forrest from "./forrest.js";
+import parrot from "./parrot.js";
 
 /**
  * Define the frames.
@@ -21,6 +22,7 @@ import forrest from "./forrest.js";
  */
 const frames = {
   forrest: forrest,
+  parrot: parrot,
 };
 
 for (const name in frames) {
