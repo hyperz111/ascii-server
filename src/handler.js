@@ -1,6 +1,6 @@
 import { parse } from "node:path/posix";
 import { print } from "./utils.js";
-import frames from "./frames.js";
+import frames from "./frames/$index.js";
 /** @import { ServerResponse, IncomingMessage } from "node;http" */
 
 /**
