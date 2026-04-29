@@ -9,7 +9,7 @@ import forrest from "./forrest.js";
  * import rick from "./rick.js";
  * // ...
  *
- * export default {
+ * const frames = {
  *   // ...
  *   rick: rick,
  *   rickroll: rick,
@@ -19,6 +19,14 @@ import forrest from "./forrest.js";
  *
  * @type {Record<string, Array<string>>}
  */
-export default {
+const frames = {
   forrest: forrest,
 };
+
+for (const name in frames) {
+  frames[name] = frames[name].map((frame) =>
+    Buffer.from(`\x1b[2J\x1b[H${frame}\n`),
+  );
+}
+
+export default frames;
