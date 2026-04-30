@@ -1,6 +1,6 @@
 # ascii-server
 
-Node.js server for ascii animation. Adapted from hugomd/ascii-live.
+Node.js server for ascii animation. Adapted from [hugomd/ascii-live](https://github.com/hugomd/ascii-live).
 
 ## Running
 
