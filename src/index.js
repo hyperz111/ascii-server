@@ -23,7 +23,7 @@ server.on("error", (error) => {
     print("Address in use, retrying...", "err");
 
     restartTimeout = setTimeout(() => {
-      clearInterval(restartTimeout);
+      clearTimeout(restartTimeout);
       server.listen(PORT, listeningListener);
     }, 5000);
   }
