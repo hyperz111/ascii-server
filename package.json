@@ -4,7 +4,8 @@
   "version": "0.0.0",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "format": "prettier -w ."
+    "format": "prettier -w .",
+    "server": "node --env-file-if-exists=config.env src/index.js"
   },
   "packageManager": "pnpm@10.15.0",
   "type": "module",
