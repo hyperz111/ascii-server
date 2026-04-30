@@ -27,7 +27,7 @@ const handler = (request, response, interval) => {
     if (parsed.root === parsed.dir) {
       const frame = frames[parsed.base];
 
-      if (frame) {
+      if (Array.isArray(frame)) {
         if (request.headers["user-agent"]?.startsWith?.("curl/")) {
           let i = 0;
 
