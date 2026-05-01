@@ -34,28 +34,5 @@ server.on("request", (request, response) => {
   print(`${request.method} ${response.statusCode} ${request.url}`);
 });
 
-/**
- * Timeout store for restart
- * @type {import("node:timers").Timeout}
- */
-let restartTimeout;
-
-// Handle error
-server.on("error", (error) => {
-  // When the address is used (`EADDRINUSE`), try to restart the server
-  if (error.code === "EADDRINUSE") {
-    print("Address in use, retrying in 5s...", "err");
-
-    restartTimeout = setTimeout(() => {
-      clearTimeout(restartTimeout);
-      server.listen(PORT, listeningListener);
-    }, 5000);
-    return;
-  }
-
-  // Throw other errors
-  throw error;
-});
-
 // Listen to the server
 server.listen(PORT, listeningListener);
