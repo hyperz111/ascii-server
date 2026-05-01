@@ -24,9 +24,17 @@ Node.js server for ascii animation. Adapted from [hugomd/ascii-live](https://git
 We use enviroment variables for configuring.
 
 - `PORT`: Host port, default `8080`
-- `INTERVAL`: Animation interval, default `100`
+- `INTERVAL`: Animation interval (in milliseconds), default `100`
 
 To set it, you can create `config.env` file on the root and set some options.
+
+Example:
+
+```text
+# config.env
+PORT=3000 # Use port 3000, so We will access localhost:3000
+INTERVAL=200 # Set interval to 200ms per frame
+```
 
 ## License
 
