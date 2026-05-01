@@ -30,7 +30,7 @@ To set it, you can create `config.env` file on the root and set some options.
 
 Example:
 
-```text
+```ini
 # config.env
 PORT=3000 # Use port 3000, so We will access localhost:3000
 INTERVAL=200 # Set interval to 200ms per frame
