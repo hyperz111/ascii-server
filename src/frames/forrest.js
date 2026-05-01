@@ -1,4 +1,8 @@
-/** @type {Array<string>} */
+/**
+ * @decription Running person frames
+ * @author hexrcs <https://github.com/hexrcs>
+ * @type {Array<string>}
+ */
 export default [
   `
                       ,dlc:;.           

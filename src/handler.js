@@ -1,9 +1,14 @@
+/**
+ * @description Request handler module
+ */
+
 import { parse } from "node:path/posix";
 import { print } from "./utils.js";
 import frames from "./frames/$index.js";
 /** @import { ServerResponse, IncomingMessage } from "node;http" */
 
 /**
+ * Helper for JSON response.
  * @param {ServerResponse} response
  * @param {number} status
  * @param {unknown} jsonish
@@ -15,6 +20,7 @@ const sendJson = (response, status, jsonish) =>
     .end(JSON.stringify(jsonish));
 
 /**
+ * Request handler function.
  * @param {IncomingMessage} request
  * @param {ServerResponse} response
  * @param {number} interval

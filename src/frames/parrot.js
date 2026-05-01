@@ -1,4 +1,8 @@
-/** @type {Array<string>} */
+/**
+ * @description Parrot head dance frames
+ * @author jmhobbs <https://github.com/jmhobbs>
+ * @type {Array<string>}
+ */
 export default [
   `                        .cccc;;cc;';c.
                       .,:dkdc:;;:c:,:d:.
