@@ -37,13 +37,28 @@ const handler = (request, response, interval) => {
       // If client use `curl` command
       if (request.headers["user-agent"]?.startsWith?.("curl/")) {
         let i = 0;
+        let currentFrame = frame[i];
+        let canContinue = true;
+
+        const changeFrame = () => {
+          canContinue = response.write(currentFrame);
+          i = (i + 1) % frame.length;
+          currentFrame = frame[i];
+        };
 
         response.writeHead(200, CHUNKED_HEADERS);
 
         // Start animation
         const ref = setInterval(() => {
-          response.write(frame[i]);
-          i = (i + 1) % frame.length;
+          if (canContinue) {
+            changeFrame();
+
+            // If We can't continue, We must don't change the frame
+            // until We can continue again (`drain` event was called).
+            if (!canContinue) {
+              response.once("drain", changeFrame);
+            }
+          }
         }, interval);
 
         // Stop the animation on client disconnect
