@@ -6,17 +6,13 @@ import { print } from "./utils.js";
 import frames from "./frames/$index.js";
 /** @import { ServerResponse, IncomingMessage } from "node;http" */
 
-/**
- * Helper for send JSON response.
- * @param {ServerResponse} response
- * @param {number} status
- * @param {unknown} jsonish
- * @returns {ServerResponse}
- */
-const sendJson = (response, status, jsonish) =>
-  response
-    .writeHead(status, { "Content-Type": "application/json" })
-    .end(JSON.stringify(jsonish));
+// These data are constants, so We should store these in here to
+// avoiding create a new memory on every requests
+const JSON_HEADERS = { "Content-Type": "application/json" };
+const CHUNKED_HEADERS = { "Transfer-Encoding": "chunked" };
+// Convert to Buffer, because (maybe) this is faster
+const ERROR_NOT_CURLED = Buffer.from(`{"error":"Almost done, curl it!"}`);
+const ERROR_NOT_FOUND = Buffer.from(`{"error":"Frame not found"}`);
 
 /**
  * Request handler function.
@@ -42,7 +38,7 @@ const handler = (request, response, interval) => {
       if (request.headers["user-agent"]?.startsWith?.("curl/")) {
         let i = 0;
 
-        response.writeHead(200, { "Transfer-Encoding": "chunked" });
+        response.writeHead(200, CHUNKED_HEADERS);
 
         // Start animation
         const ref = setInterval(() => {
@@ -61,13 +57,13 @@ const handler = (request, response, interval) => {
       }
 
       // For non-curled client
-      sendJson(response, 417, { error: `Almost done, curl it!` });
+      response.writeHead(417, JSON_HEADERS).end(ERROR_NOT_CURLED);
       return;
     }
   }
 
   // Not found
-  sendJson(response, 404, { error: `Frame not found` });
+  response.writeHead(404, JSON_HEADERS).end(ERROR_NOT_FOUND);
   return;
 };
 
