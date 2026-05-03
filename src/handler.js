@@ -12,7 +12,7 @@ const JSON_HEADERS = { "Content-Type": "application/json" };
 const CHUNKED_HEADERS = { "Transfer-Encoding": "chunked" };
 // Convert to Buffer, because (maybe) this is faster
 const ERROR_NOT_CURLED = Buffer.from(`{"error":"Almost done, curl it!"}`);
-const ERROR_NOT_FOUND = Buffer.from(`{"error":"Frame not found"}`);
+const ERROR_NOT_FOUND = Buffer.from(`{"error":"Not found"}`);
 
 /**
  * Request handler function.
