@@ -1,9 +1,11 @@
 /**
  * @decription Running person frames
  * @author hexrcs <https://github.com/hexrcs>
- * @type {Array<string>}
  */
-export default [
+
+import { defineFrames } from "../utils.js";
+
+export default defineFrames([
   `
                       ,dlc:;.           
                      .,;lkOx,           
@@ -352,4 +354,4 @@ cl;.                          .:;cddddl.
                                         
 
 `,
-];
+]);

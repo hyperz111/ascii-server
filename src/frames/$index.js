@@ -22,33 +22,11 @@ import parrot from "./parrot.js";
  * };
  * ```
  *
- * @type {Record<string, Array<string>>}
+ * @type {Record<string, Array<Buffer>>}
  */
 const frames = {
   forrest: forrest,
   parrot: parrot,
 };
 
-/**
- * Transformed frames data store.
- * @type {Record<string, Buffer>}
- */
-const transformed = {};
-
-/**
- * Transform the frames data on load, so We will NOT
- * transforming on every request.
- */
-for (const name in frames) {
-  /**
-   * Transform on each the frames value;
-   * 1. Add clear screen ANSI code at the start frame
-   * 2. Add newline at the end frame
-   * 3. Transform the frame to Node.js buffer
-   */
-  transformed[name] = frames[name].map((frame) =>
-    Buffer.from(`\x1b[2J\x1b[H${frame}\n`),
-  );
-}
-
-export default transformed;
+export default frames;

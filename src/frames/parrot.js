@@ -1,9 +1,11 @@
 /**
  * @description Parrot head dance frames
  * @author jmhobbs <https://github.com/jmhobbs>
- * @type {Array<string>}
  */
-export default [
+
+import { defineFrames } from "../utils.js";
+
+export default defineFrames([
   `                        .cccc;;cc;';c.
                       .,:dkdc:;;:c:,:d:.
                      .loc'.,cc::::::,..,:.
@@ -193,4 +195,4 @@ Ol;......................................;l'`,
    .coc,;::ldddddddddddddl:ccc:ldddddddddlc,ck;
 ,dl::,..,cccccccccccccccccccccccccccccccc:;':xx,
 cNd.........................................;lOc`,
-];
+]);
